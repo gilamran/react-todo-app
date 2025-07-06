@@ -4,7 +4,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.SERVER_API_URL}/todos`)
+    fetch(`/api/todos`)
       .then(res => res.json())
       .then(setTodos)
       .catch(err => setTodos([]));
