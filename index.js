@@ -11,6 +11,8 @@ if (!API_TARGET) {
   process.exit(1);
 }
 
+console.log('Proxying /api to API_TARGET"', API_TARGET);
+
 // Proxy API requests
 app.use('/api', createProxyMiddleware({
   target: API_TARGET,
@@ -22,7 +24,7 @@ app.use('/api', createProxyMiddleware({
 app.use(express.static(path.join(__dirname, 'build')));
 
 // React SPA fallback
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
